@@ -77,7 +77,7 @@ const SideBar = () => {
 				}
 			>
 				{category.map((item) => (
-					<ListItem disablePadding>
+					<ListItem disablePadding key={item.name}>
 						<ListItemButton>
 							<ListItemText primary={item.name} />
 						</ListItemButton>
@@ -95,7 +95,7 @@ const SideBar = () => {
 				}
 			>
 				{genres.map((item) => (
-					<ListItem disablePadding>
+					<ListItem disablePadding key={item.name}>
 						<ListItemButton>
 							<ListItemText primary={item.name} />
 						</ListItemButton>
