@@ -4,6 +4,7 @@ export default makeStyles(() => ({
 	root: {
 		display: 'flex',
 		height: '100%',
+		paddingTop: '50px',
 	},
 	toolbar: {
 		height: '20px',

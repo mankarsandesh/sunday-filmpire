@@ -22,17 +22,16 @@ const App = () => {
 				<BrowserRouter>
 					<Switch>
 						<Route exact path="/">
-							<h1>Home</h1>
+							<Movies />
 						</Route>
 						<Route exact path="/movies/:id">
-							Movies
+							<MovieInformation />
 						</Route>
 						<Route exact path="/actors/:id">
-							<h1>actors</h1>
+							<Actors />
 						</Route>
-
 						<Route exact path="/profile/:id">
-							Profile
+							<Profile />
 						</Route>
 					</Switch>
 				</BrowserRouter>
