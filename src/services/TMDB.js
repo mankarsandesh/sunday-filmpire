@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-const tmdbApiKey = process.env.TMDB_KEY
+const tmdbApiKey = process.env.REACT_APP_TMDB_KEY
 const page = 1
-console.log(process.env.TMDB_KEY, 'dsds')
-console.log(process.env.REACT_APP_TMDB_KEY)
 export const tmdbApi = createApi({
 	reducerPath: 'tmdbApi',
 	baseQuery: fetchBaseQuery({
