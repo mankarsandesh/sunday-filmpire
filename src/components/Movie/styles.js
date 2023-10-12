@@ -16,13 +16,14 @@ export default makeStyles((theme) => ({
 	},
 	image: {
 		borderRadius: '20px',
-		height: '300px',
+		height: '250px',
 		marginBottom: '10px',
 		'&:hover': {
 			transform: 'scale(1.05)',
 		},
 	},
 	links: {
+		padding: '10px',
 		textDecoration: 'none',
 		alignItems: 'center',
 		textAlign: 'center',

@@ -10,4 +10,9 @@ export default makeStyles((theme) => ({
 		width: '70%',
 		margin: '10px auto',
 	},
+	links: {
+		textDecoration: 'none',
+		color: 'inherit',
+		display: 'flex',
+	},
 }))

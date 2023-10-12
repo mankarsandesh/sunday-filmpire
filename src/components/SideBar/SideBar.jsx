@@ -6,16 +6,21 @@ import {
 	ListItem,
 	ListSubheader,
 	ListItemButton,
+	CircularProgress,
 	Avatar,
 	Typography,
 	Box,
 	IconButton,
 	Drawer,
 	useMediaQuery,
+	ListItemIcon,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
 import useStyles from './styles'
+import { useGetGenresQuery } from '../../services/TMDB'
+import genreIcons from '../../assets/genres'
+
 const redLogo =
 	'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png'
 
@@ -28,35 +33,18 @@ const category = [
 	},
 	{
 		name: 'Top Rated',
-		value: 'top_rated',
+		value: 'top rated',
 	},
 	{
-		name: 'UpComming',
+		name: 'UpComing',
 		value: 'upcoming',
-	},
-]
-const genres = [
-	{
-		name: 'Comedy',
-		value: 'comedy',
-	},
-	{
-		name: 'Action',
-		value: 'action',
-	},
-	{
-		name: 'Horror',
-		value: 'horror',
-	},
-	{
-		name: 'Animation',
-		value: 'animation',
 	},
 ]
 
 const SideBar = () => {
 	const theme = useTheme()
 	const classes = useStyles()
+	const { data, isFetching } = useGetGenresQuery()
 
 	return (
 		<>
@@ -76,31 +64,46 @@ const SideBar = () => {
 					</ListSubheader>
 				}
 			>
-				{category.map((item) => (
-					<ListItem disablePadding key={item.name}>
-						<ListItemButton>
-							<ListItemText primary={item.name} />
-						</ListItemButton>
-					</ListItem>
+				{category.map(({ name, value }) => (
+					<Link key={name} className={classes.links} to="/">
+						<ListItem onClick={() => {}} button>
+							<ListItemIcon>
+								<img
+									src={genreIcons[name.toLowerCase()]}
+									alt={name}
+									className={classes.genreIcons}
+									height={30}
+								/>
+							</ListItemIcon>
+							<ListItemText primary={name} />
+						</ListItem>
+					</Link>
 				))}
 			</List>
 			<Divider />
-			<List
-				component="nav"
-				aria-labelledby="nested-list-subheader"
-				subheader={
-					<ListSubheader component="div" id="nested-list-subheader">
-						Genres
-					</ListSubheader>
-				}
-			>
-				{genres.map((item) => (
-					<ListItem disablePadding key={item.name}>
-						<ListItemButton>
-							<ListItemText primary={item.name} />
-						</ListItemButton>
-					</ListItem>
-				))}
+			<List>
+				<ListSubheader>Genres</ListSubheader>
+				{isFetching ? (
+					<Box display="flex" justifyContent="center">
+						<CircularProgress />
+					</Box>
+				) : (
+					data.genres.map(({ name, id }) => (
+						<Link key={name} className={classes.links} to={`/`}>
+							<ListItem onClick={() => {}}>
+								<ListItemIcon>
+									<img
+										src={genreIcons[name.toLowerCase()]}
+										alt={name}
+										className={classes.genreIcons}
+										height={30}
+									/>
+								</ListItemIcon>
+								<ListItemText primary={name} />
+							</ListItem>
+						</Link>
+					))
+				)}
 			</List>
 		</>
 	)
