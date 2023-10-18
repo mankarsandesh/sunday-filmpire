@@ -85,7 +85,7 @@ const NavBar = () => {
 							onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
 							className={classes.drawerBackground}
 							classes={{ paper: classes.drawerPaper }}
-							ModelProps={{ keepMounted: true }}
+							modelprops={{ keepMounted: true }}
 						>
 							<SideBar setMobileOpen={setMobileOpen} />
 						</Drawer>

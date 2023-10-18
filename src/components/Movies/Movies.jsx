@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material'
 import { useGetMoviesQuery } from '../../services/TMDB'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { MovieList } from '../'
 
 const Movies = () => {
-	const { data, error, isFeching } = useGetMoviesQuery()
+	const [page, setPage] = useState(1)
+	const { generIdOrCategoryName } = useSelector(
+		(state) => state.currentGenreOrCategory
+	)
+	console.log(generIdOrCategoryName, 'name')
+	const { data, error, isFeching } = useGetMoviesQuery({
+		generIdOrCategoryName,
+		page,
+	})
+
 	if (isFeching) {
 		return (
 			<Box display="flex" justifyContent="center">
