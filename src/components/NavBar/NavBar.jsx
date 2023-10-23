@@ -17,7 +17,7 @@ import {
 import { Link } from 'react-router-dom'
 import UseStyles from './styles'
 import { useTheme } from '@mui/material/styles'
-import { SideBar } from '../../components'
+import { SideBar, Search } from '../../components'
 
 const NavBar = () => {
 	const classes = UseStyles()
@@ -72,7 +72,7 @@ const NavBar = () => {
 							</Button>
 						)}
 					</div>
-					{!isMobile && 'Search...'}
+					{!isMobile && <Search />}
 				</Toolbar>
 			</AppBar>
 			<div>

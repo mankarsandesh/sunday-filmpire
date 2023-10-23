@@ -6,13 +6,13 @@ import { MovieList } from '../'
 
 const Movies = () => {
 	const [page, setPage] = useState(1)
-	const { generIdOrCategoryName } = useSelector(
+	const { generIdOrCategoryName, searchQuery } = useSelector(
 		(state) => state.currentGenreOrCategory
 	)
-	console.log(generIdOrCategoryName, 'name')
 	const { data, error, isFeching } = useGetMoviesQuery({
 		generIdOrCategoryName,
 		page,
+		searchQuery,
 	})
 
 	if (isFeching) {

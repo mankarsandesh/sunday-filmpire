@@ -10,8 +10,12 @@ export const generOrCategory = createSlice({
 	reducers: {
 		selectGenerOrCategory: (state, action) => {
 			state.generIdOrCategoryName = action.payload
+			state.serarchQuery = ''
+		},
+		searchMovie: (state, action) => {
+			state.serarchQuery = action.payload
 		},
 	},
 })
-export const { selectGenerOrCategory } = generOrCategory.actions
+export const { selectGenerOrCategory, searchMovie } = generOrCategory.actions
 export default generOrCategory.reducer
