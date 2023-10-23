@@ -29,7 +29,7 @@ const category = [
 	},
 	{
 		name: 'Top Rated',
-		value: 'top rated',
+		value: 'top_rated',
 	},
 	{
 		name: 'UpComing',
@@ -64,7 +64,7 @@ const SideBar = () => {
 				{category.map(({ name, value }) => (
 					<Link key={name} className={classes.links} to="/">
 						<ListItem
-							onClick={() => dispatch(selectGenerOrCategory(name))}
+							onClick={() => dispatch(selectGenerOrCategory(value))}
 							button
 						>
 							<ListItemIcon>

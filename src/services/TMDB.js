@@ -12,14 +12,15 @@ export const tmdbApi = createApi({
 		}),
 		getMovies: builder.query({
 			query: ({ generIdOrCategoryName, page }) => {
-				console.log(generIdOrCategoryName, 'name')
+				console.log(generIdOrCategoryName, 'generIdOrCategoryName')
 				console.log(page, 'page')
+
 				// Get Movies by category
 				if (
 					generIdOrCategoryName &&
 					typeof generIdOrCategoryName === 'string'
 				) {
-					return `movie/${generIdOrCategoryName}&page=${page}&api_key=${tmdbApiKey}`
+					return `movie/${generIdOrCategoryName}?page=${page}&api_key=${tmdbApiKey}`
 				}
 				// Get Movies by genre
 				if (
@@ -28,7 +29,7 @@ export const tmdbApi = createApi({
 				) {
 					return `discover/movie?with_genres=${generIdOrCategoryName}&page=${page}&api_key=${tmdbApiKey}`
 				}
-				// Get Popular Movies
+				// Get Popular Movies by default query
 				return `movie/popular?page=${page}&api_key=${tmdbApiKey}`
 			},
 		}),
