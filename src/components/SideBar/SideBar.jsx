@@ -5,14 +5,8 @@ import {
 	ListItemText,
 	ListItem,
 	ListSubheader,
-	ListItemButton,
 	CircularProgress,
-	Avatar,
-	Typography,
 	Box,
-	IconButton,
-	Drawer,
-	useMediaQuery,
 	ListItemIcon,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
@@ -48,9 +42,6 @@ const SideBar = () => {
 	const classes = useStyles()
 	const { data, isFetching } = useGetGenresQuery()
 	const dispatch = useDispatch()
-	// const { generOrCategory } = useSelector(
-	// 	(state) => state.currentGenreOrCategory
-	// )
 
 	return (
 		<>
